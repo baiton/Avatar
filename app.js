@@ -26,19 +26,19 @@ app.get('/register', (req,res) =>{
   res.render('./register')
 })
 // -------------All Avatars--------------
-app.get('/Avatars', (req,res) =>{
+app.get('/', (req,res) =>{
   res.render('./allAvatars')
 })
 // -------------Skintone-----------------
-app.get('/:id/create/skintones', (req,res) =>{
-  res.render('./skintones')
+app.get('/create/skintones', (req,res) =>{
+  res.render('./skintone')
 })
 // -------------Hair---------------------
-app.get('/:id/create/hair', (req,res) =>{
+app.get('/create/hair', (req,res) =>{
   res.render('./hair')
 })
 // -------------Expressions--------------
-app.get('/:id/create/expressions', (req,res) =>{
+app.get('/create/expressions', (req,res) =>{
   res.render('./expressions')
 })
 
