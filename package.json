@@ -1,6 +1,7 @@
 {
   "name": "avatar",
   "version": "1.0.0",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,23 +12,18 @@
     "type": "git",
     "url": "git+https://github.com/baiton/Avatar.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/baiton/Avatar/issues"
   },
   "homepage": "https://github.com/baiton/Avatar#readme",
-  "description": "",
   "dependencies": {
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
+    "dotenv": "^4.0.0",
     "express": "^4.15.4",
-<<<<<<< HEAD
-    "mongoose": "^4.10.8",
-=======
     "mongoose": "^4.11.10",
->>>>>>> dad2e80403e5c32a2d3e1e7f660786cb026bd82d
     "mustache": "^2.3.0",
     "mustache-express": "^1.2.5"
   }
