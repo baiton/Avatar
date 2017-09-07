@@ -55,7 +55,7 @@ app.post('/addUser', function(req, res){
   })
 // -------------All Avatars--------------
 app.get('/', (req,res) =>{
-  return dal.getAllCharacters.then(function(characters){
+  return dal.getAllCharacters().then(function(characters){
     res.render('allAvatars', {characters})
     console.log('characters', characters)
   })

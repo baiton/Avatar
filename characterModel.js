@@ -6,4 +6,4 @@ const CharacterSchema =  new mongoose.Schema({
   hair:{type: String, required: true}
 })
 const Character = mongoose.model('Character', CharacterSchema)
-module.export = {Character}
+module.exports = Character
