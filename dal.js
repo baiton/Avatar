@@ -52,6 +52,13 @@ function updateCharacter(character){
       }
   )
 }
+modue.exports = {
+    getAllCharacters,
+    getUserByUsername,
+    addCharacter,
+    addUser,
+    updateCharacter
+}
 // function getAllCharacters(){
 //   return CharacterModel.find();
 // }
