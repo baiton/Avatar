@@ -47,6 +47,12 @@ app.get('/logout', function(req, res){
 app.get('/register', (req,res) =>{
   res.render('./register')
 })
+app.post('/addUser', function(req, res){
+    return dal.addUser(req.body).then(function(){
+    console.log('new user', req.body);
+    res.redirect('/')
+    })
+  })
 // -------------All Avatars--------------
 app.get('/', (req,res) =>{
   return dal.getAllCharacters.then(function(characters){
