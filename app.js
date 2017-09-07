@@ -64,7 +64,11 @@ app.post('/register', function(req, res){
 // -------------All Avatars--------------
 app.get('/', (req,res) =>{
   return dal.getAllCharacters().then(function(characters){
+<<<<<<< HEAD
     res.render('./allAvatars', {characters})
+=======
+    res.render('allAvatars', {characters})
+>>>>>>> f03576870558d8f8180b98f3054f3272a0da348c
     console.log('characters', characters)
   })
 })

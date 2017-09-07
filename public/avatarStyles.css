@@ -1,0 +1,166 @@
+body{
+background-color: #5B6A87;
+display: flex;
+justify-content: center;
+}
+
+header{
+position: fixed;
+top: 100px;
+left: 0;
+}
+
+main{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+footer{
+  position: fixed;
+  top: 100px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  width:300px;
+  height: 400px;
+}
+
+ul{
+margin: 0;
+padding: 0;
+display: flex;
+flex-direction: column;
+list-style: none;
+color: black;
+text-decoration: none;
+}
+
+li{
+
+}
+
+a{
+
+}
+
+h1{
+  margin-top: 20px;
+}
+
+/**************Special IDs***************/
+section{
+  display: flex;
+  flex-direction: column;
+}
+
+#display_options{
+  height: 400px;
+}
+
+#display_options > div{
+  height: 100px;
+  width: 100px;
+}
+
+#skintone_1{
+  background-image: url("Skintone1.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#skintone_2{
+  background-image: url("Skintone2.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#skintone_3{
+  background-image: url("Skintone3.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#skintone_4{
+  background-image: url("Skintone4.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*Hair*/
+#hair_1{
+  background-image: url("Hair1.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#hair_2{
+  background-image: url("Hair2.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#hair_3{
+  background-image: url("Hair3.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#hair_4{
+  background-image: url("Hair4.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/*Expressions*/
+#expression_1{
+  background-image: url("Expression1.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#expression_2{
+  background-image: url("Expression2.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#expression_3{
+  background-image: url("Expression3.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#expression_4{
+  background-image: url("Expression4.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*****************Landing Zone******************/
+#div-catcher{
+  position:relative;
+  height: 300px;
+  width: 300px;
+}
+
+#chosen_skin_color{
+  position: absolute;
+  height: 300px;
+  width: 300px;
+}
+
+#chosen_expression{
+  position: absolute;
+  height: 300px;
+  width: 300px;
+}
+
+#chosen_hair{
+  position: absolute;
+  height: 300px;
+  width: 300px;
+}
