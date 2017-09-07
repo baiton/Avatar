@@ -1,13 +1,66 @@
 body{
-background-color: lightgray;
+background-color: #5B6A87;
+}
+
+.nav-link.active {
+  background-color: #00d14f;
+}
+.nav-link {
+  color: white;
+}
+}
+
+h1 {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
 }
 
 header{
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
 
+}
+
+header h1 {
+  text-align: center;
 }
 
 main{
 
+}
+
+.contentMain {
+  text-align:center;
+  color: #becadd;
+
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 75px;
+  font-size: 20px;
+}
+
+.registerForm {
+  display: flex;
+  justify-content: center;
+  margin-top: 75px;
+  font-size: 20px;
+}
+
+.buttons {
+  text-align: center;
 }
 
 footer{

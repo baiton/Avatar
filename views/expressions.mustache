@@ -2,7 +2,7 @@
 <html>
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="../avatarStyles.css">
   <meta charset="utf-8">
   <title></title>
 </head>
@@ -18,20 +18,29 @@
   </header>
   <main>
     <h1>Choose your Expression!</h1>
-    <section class="div-catcher">
-      <div class="skin-color"></div>
-      <div class="expression"></div>
-      <div class="hair"></div>
+    <section id="div-catcher">
+      <div id="skin-color"></div>
+      <div id="expression"></div>
+      <div id="hair"></div>
     </section>
     <form class="" action=":id/create/expressions" method="post">
-      <select name="facialexpressions">
-        <option value="expression1">Expression 1</option>
-        <option value="expression2">Expression 2</option>
-        <option value="expression3">Expression 3</option>
-        <option value="expression4">Expression 4</option>
+      <select class="custom-select" name="facialexpressions">
+        <option selected>Choose a Expression</option>
+        <option value="expression1.png">Expression 1</option>
+        <option value="expression2.png">Expression 2</option>
+        <option value="expression3.png">Expression 3</option>
+        <option value="expression4.png">Expression 4</option>
       </select>
-      <button type="submit">Lock-In</button>
+      <button class="btn btn-secondary" type="submit">Lock-In</button>
     </form>
   </main>
+  <footer>
+    <section id="display_options">
+      <div id="expression_1"></div>
+      <div id="expression_2"></div>
+      <div id="expression_3"></div>
+      <div id="expression_4"></div>
+    </section>
+  </footer>
 </body>
 </html>

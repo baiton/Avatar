@@ -2,7 +2,7 @@
 <html>
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="../avatarStyles.css">
   <meta charset="utf-8">
   <title></title>
 </head>
@@ -18,20 +18,29 @@
   </header>
   <main>
     <h1>Choose your skintone!</h1>
-    <section class="div-catcher">
-      <div class="skin-color"></div>
-      <div class="expression"></div>
-      <div class="hair"></div>
+    <section id="div-catcher">
+      <div id="chosen_skin_color"></div>
+      <div id="chosen_expression"></div>
+      <div id="chosen_hair"></div>
     </section>
     <form class="" action=":id/create/skintones" method="post">
-      <select name="skintones">
+      <select class="custom-select" name="skintones">
+        <option selected>Choose a Skintone</option>
         <option value="skintone1">Skintone 1</option>
         <option value="skintone2">Skintone 2</option>
         <option value="skintone3">Skintone 3</option>
         <option value="skintone4">Skintone 4</option>
       </select>
-      <button type="submit">Lock-In</button>
+      <button class="btn btn-secondary" type="submit">Lock-In</button>
     </form>
   </main>
+  <footer>
+    <section id="display_options">
+      <div id="skintone_1"></div>
+      <div id="skintone_2"></div>
+      <div id="skintone_3"></div>
+      <div id="skintone_4"></div>
+    </section>
+  </footer>
 </body>
 </html>
