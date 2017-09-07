@@ -52,7 +52,7 @@ function updateCharacter(character){
       }
   )
 }
-modue.exports = {
+module.exports = {
     getAllCharacters,
     getUserByUsername,
     addCharacter,
