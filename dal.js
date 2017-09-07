@@ -4,6 +4,7 @@ const User = require('./userModel.js');
 const Character = require('./characterModel.js')
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost:27017/avatardb');  //I will make your DB!
+
 function getAllCharacters(){
   return Character.find();
 }
