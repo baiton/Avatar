@@ -28,15 +28,16 @@ app.get('/login', (req,res) =>{
   res.render('./login')
 })
 app.post('/login', function(req, res){
-  const loginUser = dal.getUserByUsername(req.body.username)
-  console.log('loginUser', loginUser)
-  if(loginUser.password === req.body.password){
+  return dal.getUserByUsername(req.body.username).then(function(loginUser){
+  console.log('loginUser, loginUser.password, req.body.psw', loginUser, loginUser.password, req.body.psw)
+  if(loginUser.password == req.body.psw){
     req.session.usr = {username: loginUser.username}
     res.redirect('/')
   }
   else{
-    res.redirect('login')
+    res.redirect('/login')
   }
+})
 })
 // -------------Logout--------------------
 app.get('/logout', function(req, res){
@@ -47,16 +48,23 @@ app.get('/logout', function(req, res){
 app.get('/register', (req,res) =>{
   res.render('./register')
 })
-app.post('/addUser', function(req, res){
-    return dal.addUser(req.body).then(function(){
-    console.log('new user', req.body);
-    res.redirect('/')
-    })
+app.post('/register', function(req, res){
+  console.log('register', req.body)
+    if(req.body.psw === req.body.psw_repeat){
+      console.log('psw and psw_repeat', req.body.psw, req.body.psw_repeat)
+      return dal.addUser(req.body).then(function(){
+        console.log('new user', req.body);
+        res.redirect('/create/skintones')
+      })
+    }
+    else{
+      res.send('Passwords must Match')
+    }
   })
 // -------------All Avatars--------------
 app.get('/', (req,res) =>{
-  return dal.getAllCharacters.then(function(characters){
-    res.render('allAvatars', {characters})
+  return dal.getAllCharacters().then(function(characters){
+    res.render('./allAvatars', {characters})
     console.log('characters', characters)
   })
 })
