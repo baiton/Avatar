@@ -19,12 +19,12 @@
   <main>
     <h1>Choose your Expression!</h1>
     <section id="div-catcher">
-      <div id="skin-color"></div>
-      <div id="expression"></div>
-      <div id="hair"></div>
+      <div id="chosen_skin_color" class="{{skinColor}}"></div>
+      <div id="chosen_expression" class="{{facialExpression}}"></div>
+      <div id="chosen_hair" class="{{hairStyle}}"></div>
     </section>
-    <form class="" action=":id/create/expressions" method="post">
-      <select class="custom-select" name="facialexpressions">
+    <form class="" action="/create/expressions" method="post">
+      <select class="custom-select" name="expression">
         <option selected>Choose a Expression</option>
         <option value="expression1.png">Expression 1</option>
         <option value="expression2.png">Expression 2</option>

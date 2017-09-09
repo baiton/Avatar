@@ -19,11 +19,11 @@
   <main>
     <h1>Choose your hairstyle!</h1>
     <section id="div-catcher">
-      <div id="skin-color"></div>
-      <div id="expression"></div>
-      <div id="hair"></div>
+      <div id="chosen_skin_color" class="{{skinColor}}"></div>
+      <div id="chosen_expression" class="{{facialExpression}}"></div>
+      <div id="chosen_hair" class="{{hairStyle}}"></div>
     </section>
-    <form class="" action=":id/create/hair" method="post">
+    <form class="" action="/create/hair" method="POST">
       <select class="custom-select" name="hair">
         <option selected>Choose a Hairstyle</option>
         <option value="Hair1.png">Hair Style 1</option>

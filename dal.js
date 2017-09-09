@@ -41,9 +41,9 @@ function addUser(newUser){
 
 function updateCharacter(character){
   Character.update({_id: character.id}, {$set:{
-    skin_tone: Character.skin_tone,
-    expression: Character.expression,
-    hair: Character.hair
+    skintone: character.skintone,
+    expression: character.expression,
+    hair: character.hair
       }
     },
     function(err, data){

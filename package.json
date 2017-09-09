@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/baiton/Avatar#readme",
   "dependencies": {
+    "bcrypt": "^1.0.3",
+    "bcryptjs": "^2.4.3",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
     "dotenv": "^4.0.0",
@@ -26,6 +28,8 @@
     "express-session": "^1.15.5",
     "mongoose": "^4.11.10",
     "mustache": "^2.3.0",
-    "mustache-express": "^1.2.5"
+    "mustache-express": "^1.2.5",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
   }
 }
