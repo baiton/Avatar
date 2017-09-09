@@ -1,4 +1,5 @@
 const express = require('express')
+const session = require('express-session')
 const mustacheExpress = require('mustache-express')
 const bodyParser = require('body-parser')
 const app = express();
@@ -13,13 +14,13 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
   extended: true
 }))
-//app.use(session({
-  //secret:'this is a secret',
-  //resave:false,
-  //saveUninitialized:true,
-  //cookie:{maxAge: null}
-  //})
-//)
+app.use(session({
+  secret:'this is a secret',
+  resave:false,
+  saveUninitialized:true,
+  cookie:{maxAge: null}
+  })
+)
 app.use(express.static('public'));
 
 
@@ -29,15 +30,15 @@ app.get('/login', (req,res) =>{
 })
 app.post('/login', function(req, res){
   return dal.getUserByUsername(req.body.username).then(function(loginUser){
-  console.log('loginUser, loginUser.password, req.body.psw', loginUser, loginUser.password, req.body.psw)
-  if(loginUser.password == req.body.psw){
-    req.session.usr = {username: loginUser.username}
-    res.redirect('/')
-  }
-  else{
-    res.redirect('/login')
-  }
-})
+    console.log('loginUser, loginUser.password, req.body.psw', loginUser, loginUser.password, req.body.psw);
+    if(loginUser.password == req.body.psw){
+      req.session.usr = {username: loginUser.username}
+      res.redirect('/')
+    }
+    else{
+      res.redirect('/login')
+    }
+  })
 })
 // -------------Logout--------------------
 app.get('/logout', function(req, res){
@@ -64,11 +65,7 @@ app.post('/register', function(req, res){
 // -------------All Avatars--------------
 app.get('/', (req,res) =>{
   return dal.getAllCharacters().then(function(characters){
-<<<<<<< HEAD
     res.render('./allAvatars', {characters})
-=======
-    res.render('allAvatars', {characters})
->>>>>>> f03576870558d8f8180b98f3054f3272a0da348c
     console.log('characters', characters)
   })
 })
