@@ -19,17 +19,17 @@
   <main>
     <h1>Choose your skintone!</h1>
     <section id="div-catcher">
-      <div id="chosen_skin_color"></div>
-      <div id="chosen_expression"></div>
-      <div id="chosen_hair"></div>
+      <div id="chosen_skin_color" class="{{skinColor}}"></div>
+      <div id="chosen_expression" class="{{facialExpression}}"></div>
+      <div id="chosen_hair" class="{{hairStyle}}"></div>
     </section>
-    <form class="" action=":id/create/skintones" method="post">
-      <select class="custom-select" name="skintones">
+    <form class="" action="/create/skintones" method="post">
+      <select class="custom-select" name="skintone">
         <option selected>Choose a Skintone</option>
-        <option value="skintone1">Skintone 1</option>
-        <option value="skintone2">Skintone 2</option>
-        <option value="skintone3">Skintone 3</option>
-        <option value="skintone4">Skintone 4</option>
+        <option value="./Skintone1.png">Skintone 1</option>
+        <option value="./Skintone2.png">Skintone 2</option>
+        <option value="./Skintone3.png">Skintone 3</option>
+        <option value="./Skintone4.png">Skintone 4</option>
       </select>
       <button class="btn btn-secondary" type="submit">Lock-In</button>
     </form>

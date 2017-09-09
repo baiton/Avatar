@@ -145,22 +145,74 @@ section{
   position:relative;
   height: 300px;
   width: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #chosen_skin_color{
   position: absolute;
   height: 300px;
   width: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #chosen_expression{
   position: absolute;
   height: 300px;
   width: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #chosen_hair{
   position: absolute;
   height: 300px;
   width: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/***************Preview Avatar*********************/
+.skintone-1{
+  background-image: url("Skintone1.png");
+}
+.skintone-2{
+  background-image: url("Skintone2.png");
+}
+.skintone-3{
+  background-image: url("Skintone3.png");
+}
+.skintone-4{
+  background-image: url("Skintone4.png");
+}
+
+.expression-1{
+  background-image: url("Skintone1.png");
+}
+.expression-2{
+  background-image: url("Skintone2.png");
+}
+.expression-3{
+  background-image: url("Skintone3.png");
+}
+.expression-4{
+  background-image: url("Skintone4.png");
+}
+
+.hair-1{
+  background-image: url("Skintone1.png");
+}
+.hair-2{
+  background-image: url("Skintone2.png");
+}
+.hair-3{
+  background-image: url("Skintone3.png");
+}
+.hair-4{
+  background-image: url("Skintone4.png");
 }

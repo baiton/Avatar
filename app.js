@@ -2,7 +2,7 @@ const express = require('express')
 const mustacheExpress = require('mustache-express')
 const bodyParser = require('body-parser')
 const app = express();
-// const session = require('express-session')
+const session = require('express-session')
 const dal = require('./dal.js')
 
 app.engine('mustache', mustacheExpress())
@@ -13,13 +13,19 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
   extended: true
 }))
-//app.use(session({
-  //secret:'this is a secret',
-  //resave:false,
-  //saveUninitialized:true,
-  //cookie:{maxAge: null}
-  //})
-//)
+app.use(session({
+  expires: null,
+  secret:'this is a secret',
+  resave: false,
+  saveUninitialized: false,
+  cookie:{maxAge: null},
+  avatar:{
+    skintone: "",
+    expression: "",
+    hair: ""
+  }
+  })
+)
 app.use(express.static('public'));
 
 
@@ -46,6 +52,7 @@ app.get('/logout', function(req, res){
 })
 // -------------Register-----------------
 app.get('/register', (req,res) =>{
+  console.log("req.session", req.session);
   res.render('./register')
 })
 app.post('/register', function(req, res){
@@ -64,11 +71,7 @@ app.post('/register', function(req, res){
 // -------------All Avatars--------------
 app.get('/', (req,res) =>{
   return dal.getAllCharacters().then(function(characters){
-<<<<<<< HEAD
     res.render('./allAvatars', {characters})
-=======
-    res.render('allAvatars', {characters})
->>>>>>> f03576870558d8f8180b98f3054f3272a0da348c
     console.log('characters', characters)
   })
 })
@@ -76,13 +79,32 @@ app.get('/', (req,res) =>{
 app.get('/create/skintones', (req,res) =>{
   res.render('./skintone')
 })
-// -------------Hair---------------------
-app.get('/create/hair', (req,res) =>{
-  res.render('./hair')
+
+app.post('/create/skintones', (req, res) =>{
+  req.session.avatar.skintone = req.body
+  res.redirect('/create/expressions')
 })
 // -------------Expressions--------------
 app.get('/create/expressions', (req,res) =>{
-  res.render('./expressions')
+  let skinColor = req.session.avatar.skintone
+  res.render('./expressions', skinColor)
+})
+app.post('/create/expressions', (req, res) =>{
+  req.session.avatar.expression = req.body
+  res.redirect('/create/hair')
+})
+// -------------Hair---------------------
+app.get('/create/hair', (req,res) =>{
+  let facialExpression = req.session.avatar.expression
+  res.render('./hair', facialExpression)
+})
+
+app.post('/create/hair', (req, res) =>{
+  req.session.avatar.hair = req.body
+  updateCharacter(session.avatar).then() (req,res) =>{
+    res.redirect('/', hairStyle)
+  }
+  // let hairStyle = req.session.avatar.hair
 })
 
 
