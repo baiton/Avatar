@@ -7,14 +7,14 @@ const session = require('express-session');
 const bluebird = require('bluebird');
 const bcrypt = require('bcryptjs')                 //passport related
 const flash = require('express-flash-messages');   // passport related
+const dal = require('./dal.js')
+const app = express();
+
 
 bcrypt.compareSync(password, hash);           // passport related
 let password = newUser.psw;                   //passport related
 const hash = bcrypt.hashSync(password, 8);    //passport related
 
-const app = express();
-const session = require('express-session')
-const dal = require('./dal.js')
 
 app.engine('mustache', mustacheExpress())
 app.set('view engine', 'mustache')
@@ -116,12 +116,13 @@ app.get('/login', function(req,res) {
     });
 })
 
-app.post('/login', function(req, res){       //passport related
-  passport.authenticate('local', {           //passport related
-    successRedirect: '/',                    // passport related
-    failureRedirect: '/login',              //passport related
-    failureFlash: true                      //passport related
-  })
+app.post('/login',
+  passport.authenticate('local', {          //passport related
+  successRedirect: '/',                     // passport related
+  failureRedirect: '/login',                //passport related
+  failureFlash: true},                      //passport related
+  function(req, res){                       //passport related
+
   return dal.getUserByUsername(req.body.username).then(function(loginUser){
   console.log('loginUser, loginUser.password, req.body.psw', loginUser, loginUser.password, req.body.psw)
   if(loginUser.password == req.body.psw){
@@ -132,7 +133,7 @@ app.post('/login', function(req, res){       //passport related
     res.redirect('/login')
   }
 })
-})
+}))
 // -------------Logout--------------------
 app.get('/logout', function(req, res){
   req.session.destroy()
@@ -169,7 +170,7 @@ app.get('/create/skintones', (req,res) =>{
 })
 
 app.post('/create/skintones', (req, res) =>{
-  req.session.avatar.skintone = req.body
+  req.session.avatar.skintone = req.body  //skintone selection is added into a session
   res.redirect('/create/expressions')
 })
 // -------------Expressions--------------
@@ -178,7 +179,7 @@ app.get('/create/expressions', (req,res) =>{
   res.render('./expressions', skinColor)
 })
 app.post('/create/expressions', (req, res) =>{
-  req.session.avatar.expression = req.body
+  req.session.avatar.expression = req.body //expression selection is added into a session
   res.redirect('/create/hair')
 })
 // -------------Hair---------------------
@@ -188,10 +189,10 @@ app.get('/create/hair', (req,res) =>{
 })
 
 app.post('/create/hair', (req, res) =>{
-  req.session.avatar.hair = req.body
-  updateCharacter(session.avatar).then() (req,res) =>{
+  // req.session.avatar.hair = req.body //hair selection is added into a session
+  // updateCharacter(session.avatar).then() (req,res) =>{
     res.redirect('/', hairStyle)
-  }
+  // }
   // let hairStyle = req.session.avatar.hair
 })
 
