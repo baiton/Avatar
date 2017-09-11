@@ -1,3 +1,4 @@
+
 const express = require('express');
 const mustacheExpress = require('mustache-express');
 const bodyParser = require('body-parser');
@@ -7,14 +8,13 @@ const session = require('express-session');
 const bluebird = require('bluebird');
 const bcrypt = require('bcryptjs')                 //passport related
 const flash = require('express-flash-messages');   // passport related
-const dal = require('./dal.js')
+
+// bcrypt.compareSync(password, hash);           // passport related
+// let password = newUser.psw;                   //passport related
+// const hash = bcrypt.hashSync(password, 8);    //passport related
+
 const app = express();
-
-
-bcrypt.compareSync(password, hash);           // passport related
-let password = newUser.psw;                   //passport related
-const hash = bcrypt.hashSync(password, 8);    //passport related
-
+const dal = require('./dal.js')
 
 app.engine('mustache', mustacheExpress())
 app.set('view engine', 'mustache')
@@ -24,7 +24,6 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
   extended: true
 }))
-
 
 // session below and passport init
 app.use(session({
@@ -49,65 +48,65 @@ app.use(express.static('public'));
 
 
 // bcryptjs below, put on your hardhats and lets go to work people!
-const userSchema = new mongoose.Schema({
-  username: { type: String, unique: true, lowercase: true, required: true },
-  passwordHash: { type: String, required: true }
-});
+// const userSchema = new mongoose.Schema({
+//   username: { type: String, unique: true, lowercase: true, required: true },
+//   passwordHash: { type: String, required: true }
+// });
 
-const User = mongoose.model('User', userSchema);
+// const User = mongoose.model('User', userSchema);
 
-userSchema.virtual('password')
-  .get(function () { return null })
-  .set(function (value) {
-    const hash = bcrypt.hashSync(value, 8);
-    this.passwordHash = hash;
-  })
-
-userSchema.methods.authenticate = function (password) {
-  return bcrypt.compareSync(password, this.passwordHash);
-}
-
-userSchema.statics.authenticate = function(username, password, done) {
-    this.findOne({
-        username: username
-    }, function(err, user) {
-        if (err) {
-            done(err, false)
-        } else if (user && user.authenticate(password)) {
-            done(null, user)
-        } else {
-            done(null, false)
-        }
-    })
-};
-
-// passport attempt below, fasten your seatbelts people. cat5 passport
-passport.use(new LocalStrategy(
-    function(username, password, done) {
-        User.authenticate(username, password, function(err, user) {
-            if (err) {
-                return done(err)
-            }
-            if (user) {
-                return done(null, user)
-            } else {
-                return done(null, false, {
-                    message: "There is no user with that username and password."
-                })
-            }
-        })
-    }));
-
-passport.serializeUser(function(user, done) {
-    done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
-        done(err, user);
-    });
-});
-
+// userSchema.virtual('password')
+//   .get(function () { return null })
+//   .set(function (value) {
+//     const hash = bcrypt.hashSync(value, 8);
+//     this.passwordHash = hash;
+//   })
+//
+// userSchema.methods.authenticate = function (password) {
+//   return bcrypt.compareSync(password, this.passwordHash);
+// }
+//
+// userSchema.statics.authenticate = function(username, password, done) {
+//     this.findOne({
+//         username: username
+//     }, function(err, user) {
+//         if (err) {
+//             done(err, false)
+//         } else if (user && user.authenticate(password)) {
+//             done(null, user)
+//         } else {
+//             done(null, false)
+//         }
+//     })
+// };
+//
+// // passport attempt below, fasten your seatbelts people. cat5 passport
+// passport.use(new LocalStrategy(
+//     function(username, password, done) {
+//         User.authenticate(username, password, function(err, user) {
+//             if (err) {
+//                 return done(err)
+//             }
+//             if (user) {
+//                 return done(null, user)
+//             } else {
+//                 return done(null, false, {
+//                     message: "There is no user with that username and password."
+//                 })
+//             }
+//         })
+//     }));
+//
+// passport.serializeUser(function(user, done) {
+//     done(null, user.id);
+// });
+//
+// passport.deserializeUser(function(id, done) {
+//     User.findById(id, function(err, user) {
+//         done(err, user);
+//     });
+// });
+//
 
 // -------------Login--------------------
 app.get('/login', function(req,res) {
@@ -116,24 +115,23 @@ app.get('/login', function(req,res) {
     });
 })
 
-app.post('/login',
-  passport.authenticate('local', {          //passport related
-  successRedirect: '/',                     // passport related
-  failureRedirect: '/login',                //passport related
-  failureFlash: true},                      //passport related
-  function(req, res){                       //passport related
-
+app.post('/login', function(req, res){       //passport related
+  passport.authenticate('local', {           //passport related
+    successRedirect: '/',                    // passport related
+    failureRedirect: '/login',              //passport related
+    failureFlash: true                      //passport related
+  })
   return dal.getUserByUsername(req.body.username).then(function(loginUser){
-  console.log('loginUser, loginUser.password, req.body.psw', loginUser, loginUser.password, req.body.psw)
-  if(loginUser.password == req.body.psw){
-    req.session.usr = {username: loginUser.username}
-    res.redirect('/')
-  }
-  else{
-    res.redirect('/login')
-  }
+    console.log('loginUser, loginUser.password, req.body.psw', loginUser, loginUser.password, req.body.psw);
+    if(loginUser.password == req.body.psw){
+      req.session.usr = {username: loginUser.username}
+      res.redirect('/')
+    }
+    else{
+      res.redirect('/login')
+    }
+  })
 })
-}))
 // -------------Logout--------------------
 app.get('/logout', function(req, res){
   req.session.destroy()
@@ -170,28 +168,28 @@ app.get('/create/skintones', (req,res) =>{
 })
 
 app.post('/create/skintones', (req, res) =>{
-  req.session.avatar.skintone = req.body  //skintone selection is added into a session
+  // req.session.avatar.skintone = req.body
   res.redirect('/create/expressions')
 })
 // -------------Expressions--------------
 app.get('/create/expressions', (req,res) =>{
-  let skinColor = req.session.avatar.skintone
-  res.render('./expressions', skinColor)
+  // let skinColor = req.session.avatar.skintone
+  res.render('./expressions')
 })
 app.post('/create/expressions', (req, res) =>{
-  req.session.avatar.expression = req.body //expression selection is added into a session
+  // req.session.avatar.expression = req.body
   res.redirect('/create/hair')
 })
 // -------------Hair---------------------
 app.get('/create/hair', (req,res) =>{
-  let facialExpression = req.session.avatar.expression
-  res.render('./hair', facialExpression)
+  // let facialExpression = req.session.avatar.expression
+  res.render('./hair')
 })
 
 app.post('/create/hair', (req, res) =>{
-  // req.session.avatar.hair = req.body //hair selection is added into a session
+  // req.session.avatar.hair = req.body
   // updateCharacter(session.avatar).then() (req,res) =>{
-    res.redirect('/', hairStyle)
+    res.redirect('/')
   // }
   // let hairStyle = req.session.avatar.hair
 })
