@@ -32,7 +32,6 @@ footer{
   top: 100px;
   right: 0;
   display: flex;
-  flex-direction: column;
   width:300px;
   height: 400px;
 }
@@ -70,11 +69,17 @@ section{
   flex-direction: column;
 }
 
-#display_options{
+.display_options{
   height: 400px;
+  display: flex;
+  flex-direction: column;
 }
 
-#display_options > div{
+.display_options > div{
+  height: 100px;
+  width: 100px;
+}
+.display_options > h3{
   height: 100px;
   width: 100px;
 }

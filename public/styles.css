@@ -105,3 +105,8 @@ button{
 label{
   margin: 5px;
 }
+
+.character{
+  height: 100px;
+  width: 100px;
+}
