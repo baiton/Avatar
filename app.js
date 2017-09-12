@@ -158,6 +158,10 @@ app.get('/', (req,res) =>{
 })
 // -------------Skintone-----------------
 app.get('/create/skintones', (req,res) =>{
+  res.render('./skintone')
+})
+
+app.post('/create/skintones', (req, res) =>{
   if(!req.session.avatar){
     req.session.avatar = {
       skintone: "",
@@ -166,35 +170,43 @@ app.get('/create/skintones', (req,res) =>{
     }} else {
       req.session.avatar = {
         skintone: req.body.skintone,
-        expression: req.body.expression,
-        hair: req.body.hair
     }
   }
-  res.render('./skintone')
-})
-
-app.post('/create/skintones', (req, res) =>{
-  // req.session.avatar.skintone = req.body
   res.redirect('/create/expressions')
 })
 // -------------Expressions--------------
 app.get('/create/expressions', (req,res) =>{
-  // let skinColor = req.session.avatar.skintone
   res.render('./expressions')
 })
 app.post('/create/expressions', (req, res) =>{
-  // req.session.avatar.expression = req.body
+  if(!req.session.avatar){
+    req.session.avatar = {
+      skintone: "",
+      expression: "",
+      hair: ""
+    }} else {
+      req.session.avatar = {
+        expression: req.body.expression,
+    }
+  }
   res.redirect('/create/hair')
 })
 // -------------Hair---------------------
 app.get('/create/hair', (req,res) =>{
-  // let facialExpression = req.session.avatar.expression
   res.render('./hair')
 })
 
 app.post('/create/hair', (req, res) =>{
-  // req.session.avatar.hair = req.body
-  // updateCharacter(session.avatar).then() (req,res) =>{
+  if(!req.session.avatar){
+    req.session.avatar = {
+      skintone: "",
+      expression: "",
+      hair: ""
+    }} else {
+      req.session.avatar = {
+        hair: req.body.hair
+    }
+  }
     res.redirect('/')
   // }
   // let hairStyle = req.session.avatar.hair
