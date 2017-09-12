@@ -32,13 +32,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie:{maxAge: null},
-  avatar:{
-    skintone: "",
-    expression: "",
-    hair: ""
-  }
-  })
-)
+  }))
 
 app.use(passport.initialize());         //passport related
 app.use(passport.session());            //passport related
@@ -164,6 +158,18 @@ app.get('/', (req,res) =>{
 })
 // -------------Skintone-----------------
 app.get('/create/skintones', (req,res) =>{
+  if(!req.session.avatar){
+    req.session.avatar = {
+      skintone: "",
+      expression: "",
+      hair: ""
+    }} else {
+      req.session.avatar = {
+        skintone: req.body.skintone,
+        expression: req.body.expression,
+        hair: req.body.hair
+    }
+  }
   res.render('./skintone')
 })
 
