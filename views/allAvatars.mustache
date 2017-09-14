@@ -23,9 +23,14 @@
       <img class="character" src="./Josh.png" alt="Josh">
     </article>
     <h3> View all charachters below or register and log in above to create your own! </h3>
-    <div>
-      <div class="allAvatarsHere">
-      </div>
+    <div class="avatar-container">
+      {{#avatars}}
+      <section class="one-avatar">
+        <div class=" avatar_item {{skintone}}"></div>
+        <div class=" avatar_item {{expression}}"></div>
+        <div class=" avatar_item {{hair}}"></div>
+      </section>
+      {{/avatars}}
     </div>
   </main>
   <footer>

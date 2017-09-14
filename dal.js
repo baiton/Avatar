@@ -4,6 +4,8 @@ const User = require('./userModel.js');
 const Character = require('./characterModel.js')
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost:27017/avatardb');  //I will make your DB!
+
+
 function getAllCharacters(){
   return Character.find();
 }
@@ -16,21 +18,19 @@ function getUserByUsername (username) {
 
 function addCharacter(newCharacter){
   const character = new Character({
-    skin_tone: newCharacter.skin_tone,
+    skintone: newCharacter.skintone,
     expression:newCharacter.expression,
     hair:newCharacter.hair
   })
-  console.log('character', character);
-  character.save(function(err){
+  return character.save(function(err){
     console.log(err)
   })
-  return Promise.resolve('success')
 }
 
 function addUser(newUser){
   const user = new User({
     username: newUser.username,
-    password: newUser.password
+    password: newUser.psw
   })
   console.log('user', user);
   user.save(function(err){

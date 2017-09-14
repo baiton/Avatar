@@ -110,3 +110,68 @@ label{
   height: 100px;
   width: 100px;
 }
+
+.avatar-container{
+  display: flex;
+  justify-content: space-between;
+  width: 75%;
+}
+
+.one-avatar{
+  position:relative;
+  height: 200px;
+  width: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.avatar_item{
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+/***************Preview Avatar*********************/
+.skintone-1{
+  background-image: url("Skintone1.png");
+}
+.skintone-2{
+  background-image: url("Skintone2.png");
+}
+.skintone-3{
+  background-image: url("Skintone3.png");
+}
+.skintone-4{
+  background-image: url("Skintone4.png");
+}
+
+.expression-1{
+  background-image: url("Expression1.png");
+}
+.expression-2{
+  background-image: url("Expression2.png");
+}
+.expression-3{
+  background-image: url("Expression3.png");
+}
+.expression-4{
+  background-image: url("Expression4.png");
+}
+
+.hair-1{
+  background-image: url("Hair1.png");
+}
+.hair-2{
+  background-image: url("Hair2.png");
+}
+.hair-3{
+  background-image: url("Hair3.png");
+}
+.hair-4{
+  background-image: url("Hair4.png");
+}

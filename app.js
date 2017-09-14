@@ -101,6 +101,13 @@ app.use(express.static('public'));
 //     });
 // });
 //
+//
+// passport.authenticate('local', {           //passport related
+//   successRedirect: '/',                    // passport related
+//   failureRedirect: '/login',              //passport related
+//   failureFlash: true                      //passport related
+// })
+
 
 // -------------Login--------------------
 app.get('/login', function(req,res) {
@@ -110,13 +117,8 @@ app.get('/login', function(req,res) {
 })
 
 app.post('/login', function(req, res){       //passport related
-  passport.authenticate('local', {           //passport related
-    successRedirect: '/',                    // passport related
-    failureRedirect: '/login',              //passport related
-    failureFlash: true                      //passport related
-  })
   return dal.getUserByUsername(req.body.username).then(function(loginUser){
-    console.log('loginUser, loginUser.password, req.body.psw', loginUser, loginUser.password, req.body.psw);
+    // console.log('loginUser, loginUser.password, req.body.psw', loginUser, loginUser.password, req.body.psw);
     if(loginUser.password == req.body.psw){
       req.session.usr = {username: loginUser.username}
       res.redirect('/')
@@ -152,31 +154,29 @@ app.post('/register', function(req, res){
 // -------------All Avatars--------------
 app.get('/', (req,res) =>{
   return dal.getAllCharacters().then(function(characters){
-    res.render('./allAvatars', {characters})
-    console.log('characters', characters)
+    console.log(characters);
+    res.render('./allAvatars', {avatars: characters})
   })
 })
 // -------------Skintone-----------------
 app.get('/create/skintones', (req,res) =>{
-  res.render('./skintone')
+  res.render('./skintone', {avatar: req.session.avatar})
 })
 
 app.post('/create/skintones', (req, res) =>{
   if(!req.session.avatar){
     req.session.avatar = {
-      skintone: "",
+      skintone: req.body.skintone,
       expression: "",
       hair: ""
     }} else {
-      req.session.avatar = {
-        skintone: req.body.skintone,
-    }
+      req.session.avatar.skintone = req.body.skintone
   }
   res.redirect('/create/expressions')
 })
 // -------------Expressions--------------
 app.get('/create/expressions', (req,res) =>{
-  res.render('./expressions')
+  res.render('./expressions', {avatar: req.session.avatar})
 })
 app.post('/create/expressions', (req, res) =>{
   if(!req.session.avatar){
@@ -185,29 +185,31 @@ app.post('/create/expressions', (req, res) =>{
       expression: "",
       hair: ""
     }} else {
-      req.session.avatar = {
-        expression: req.body.expression,
+      req.session.avatar.expression = req.body.expression
     }
-  }
   res.redirect('/create/hair')
 })
 // -------------Hair---------------------
 app.get('/create/hair', (req,res) =>{
-  res.render('./hair')
+  console.log("expression", req.session.avatar.expression);
+  res.render('./hair', {avatar: req.session.avatar})
 })
 
 app.post('/create/hair', (req, res) =>{
+  // console.log("req.session.avatar", req.session.avatar);
   if(!req.session.avatar){
     req.session.avatar = {
       skintone: "",
       expression: "",
       hair: ""
     }} else {
-      req.session.avatar = {
-        hair: req.body.hair
+      req.session.avatar.hair = req.body.hair
+      // req.sessions.avatar.user = req.user._id
     }
-  }
-    res.redirect('/')
+    dal.addCharacter(req.session.avatar).then(function(newAvatar){
+      console.log(newAvatar);
+      res.redirect('/')
+    })
   // }
   // let hairStyle = req.session.avatar.hair
 })

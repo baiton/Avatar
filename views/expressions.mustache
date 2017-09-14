@@ -15,18 +15,18 @@
   </header>
   <main>
     <h1>Choose your Expression!</h1>
-    <section id="div-catcher">
-      <div id="chosen_skin_color" class="{{skinColor}}"></div>
-      <div id="chosen_expression" class="{{facialExpression}}"></div>
-      <div id="chosen_hair" class="{{hairStyle}}"></div>
+    <section class="one-avatar">
+      <div class=" avatar_item {{avatar.skintone}}"></div>
+      <div class=" avatar_item {{avatar.expression}}"></div>
+      <div class=" avatar_item {{avatar.hair}}"></div>
     </section>
     <form class="" action="/create/expressions" method="post">
       <select class="" name="expression">
         <option selected>Choose a Expression</option>
-        <option value="expression1.png">Expression 1</option>
-        <option value="expression2.png">Expression 2</option>
-        <option value="expression3.png">Expression 3</option>
-        <option value="expression4.png">Expression 4</option>
+        <option value="expression-1">Expression 1</option>
+        <option value="expression-2">Expression 2</option>
+        <option value="expression-3">Expression 3</option>
+        <option value="expression-4">Expression 4</option>
       </select>
       <button class="" type="submit">Lock-In</button>
     </form>

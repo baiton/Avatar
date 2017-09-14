@@ -161,7 +161,7 @@ section{
 }
 
 /*****************Landing Zone******************/
-#div-catcher{
+.one-avatar{
   position:relative;
   height: 300px;
   width: 300px;
@@ -170,25 +170,7 @@ section{
   background-size: cover;
 }
 
-#chosen_skin_color{
-  position: absolute;
-  height: 300px;
-  width: 300px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#chosen_expression{
-  position: absolute;
-  height: 300px;
-  width: 300px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#chosen_hair{
+.avatar_item{
   position: absolute;
   height: 300px;
   width: 300px;
@@ -212,27 +194,27 @@ section{
 }
 
 .expression-1{
-  background-image: url("Skintone1.png");
+  background-image: url("Expression1.png");
 }
 .expression-2{
-  background-image: url("Skintone2.png");
+  background-image: url("Expression2.png");
 }
 .expression-3{
-  background-image: url("Skintone3.png");
+  background-image: url("Expression3.png");
 }
 .expression-4{
-  background-image: url("Skintone4.png");
+  background-image: url("Expression4.png");
 }
 
 .hair-1{
-  background-image: url("Skintone1.png");
+  background-image: url("Hair1.png");
 }
 .hair-2{
-  background-image: url("Skintone2.png");
+  background-image: url("Hair2.png");
 }
 .hair-3{
-  background-image: url("Skintone3.png");
+  background-image: url("Hair3.png");
 }
 .hair-4{
-  background-image: url("Skintone4.png");
+  background-image: url("Hair4.png");
 }
