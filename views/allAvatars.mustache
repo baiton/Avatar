@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <link rel="stylesheet" href="styles.css">
   <meta charset="utf-8">
   <title>View All Avatars Here</title>
@@ -9,31 +9,35 @@
 
 <body>
   <header>
-    <nav class="nav nav-pills nav-justified">
-        <a class="nav-link active bg-secondary" href="/">View All</a>
-        <a class="nav-link" href="/login">Login</a>
-        <a class="nav-link" href="/register">Sign-up</a>
+    <nav class="">
+      <a class="" href="/">View All</a>
+      <a class="" href="/login">Login</a>
+      <a class="" href="/register">Sign-up</a>
     </nav>
   </header>
-
-  <div class = "contentMain">
-    <h1> Welcome to Avatar, the Last Web-Bender! </h1>
+  <main>
+    <img src="./logo.png" alt="Avatar The Last Web Bender">
+    <article class="images">
+      <img class="character" src="./Patrick.png" alt="Patrick">
+      <img class="character" src="./Brandon.png" alt="Brandon">
+      <img class="character" src="./Josh.png" alt="Josh">
+    </article>
     <h3> View all charachters below or register and log in above to create your own! </h3>
-  </div>
-
-  <div>
-    <div class="allAvatarsHere">
-
-      <a href="link"></a>
+    <div class="avatar-container">
+      {{#avatars}}
+      <section class="one-avatar">
+        <div class=" avatar_item {{skintone}}"></div>
+        <div class=" avatar_item {{expression}}"></div>
+        <div class=" avatar_item {{hair}}"></div>
+      </section>
+      {{/avatars}}
     </div>
-    <!-- end of "allAvatarsHere" class -->
+  </main>
+  <footer>
+    <a class="" href="/logout">
+      Logout
+    </a>
+  </footer>
+</body>
 
-
-
-
-
-
-    </div> <!-- the end of "container" class
-
-  </body>
 </html>

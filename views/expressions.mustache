@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <link rel="stylesheet" href="../avatarStyles.css">
   <meta charset="utf-8">
   <title></title>
@@ -9,33 +8,37 @@
 <body class=link7>
   <header>
     <nav>
-      <ul class="">
-        <a class="" href="/create/skintones"><li class="link1">Skintone</li></a>
-        <a class="" href="/create/expressions"><li class="link2">Facial Expression</li></a>
-        <a class="" href="/create/hair"><li class="link3">Hair</li></a>
-      </ul>
+        <a class="" href="/create/skintones">Skintone</a>
+        <a class="" href="/create/expressions">Facial Expression</a>
+        <a class="" href="/create/hair">Hair</a>
     </nav>
   </header>
   <main>
     <h1>Choose your Expression!</h1>
-    <section id="div-catcher">
-      <div id="skin-color"></div>
-      <div id="expression"></div>
-      <div id="hair"></div>
+    <section class="one-avatar">
+      <div class=" avatar_item {{avatar.skintone}}"></div>
+      <div class=" avatar_item {{avatar.expression}}"></div>
+      <div class=" avatar_item {{avatar.hair}}"></div>
     </section>
-    <form class="" action=":id/create/expressions" method="post">
-      <select class="custom-select" name="facialexpressions">
+    <form class="" action="/create/expressions" method="post">
+      <select class="" name="expression">
         <option selected>Choose a Expression</option>
-        <option value="expression1.png">Expression 1</option>
-        <option value="expression2.png">Expression 2</option>
-        <option value="expression3.png">Expression 3</option>
-        <option value="expression4.png">Expression 4</option>
+        <option value="expression-1">Expression 1</option>
+        <option value="expression-2">Expression 2</option>
+        <option value="expression-3">Expression 3</option>
+        <option value="expression-4">Expression 4</option>
       </select>
-      <button class="btn btn-secondary" type="submit">Lock-In</button>
+      <button class="" type="submit">Lock-In</button>
     </form>
   </main>
   <footer>
-    <section id="display_options">
+    <section class="display_options">
+      <h3>Expression 1</h3>
+      <h3>Expression 2</h3>
+      <h3>Expression 3</h3>
+      <h3>Expression 4</h3>
+    </section>
+    <section class="display_options">
       <div id="expression_1"></div>
       <div id="expression_2"></div>
       <div id="expression_3"></div>
